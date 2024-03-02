@@ -1,5 +1,6 @@
 package in.decx.train.Controller;
 
+import in.decx.train.Problems.Demo;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,5 +17,11 @@ public class TreeController {
         ClassPathResource resource = new ClassPathResource("Codes/SymmetricTree.java");
         String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
         return "<pre>" + data + "</pre>";
+    }
+
+    @GetMapping("/code/hello")
+    public String helloWorld() throws IOException {
+        Demo d = new Demo();
+        return d.helloWorld();
     }
 }
