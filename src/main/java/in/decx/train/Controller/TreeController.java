@@ -11,11 +11,16 @@ import java.nio.charset.StandardCharsets;
 @RestController
 public class TreeController {
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
     @GetMapping("/code/SymmetricTree")
     public String getCode() throws IOException {
         ClassPathResource resource = new ClassPathResource("Codes/SymmetricTree.java");
         String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
         return "<pre>" + data + "</pre>";
     }
+
 
 }
