@@ -12,6 +12,7 @@ import java.nio.charset.StandardCharsets;
 @RestController
 public class TreeController {
 
+    public Demo d;
     @GetMapping("/code/SymmetricTree")
     public String getCode() throws IOException {
         ClassPathResource resource = new ClassPathResource("Codes/SymmetricTree.java");
@@ -21,6 +22,6 @@ public class TreeController {
 
     @GetMapping("/code/hello")
     public String helloWorld() {
-        return "hello";
+        return d.helloWorld();
     }
 }
