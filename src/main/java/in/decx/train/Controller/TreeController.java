@@ -20,7 +20,7 @@ public class TreeController {
     }
 
     @GetMapping("/code/hello")
-    public String helloWorld() throws IOException {
+    public String helloWorld() {
         Demo d = new Demo();
         return d.helloWorld();
     }
