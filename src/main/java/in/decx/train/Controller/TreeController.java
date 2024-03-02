@@ -22,6 +22,6 @@ public class TreeController {
 
     @GetMapping("/code/hello")
     public String helloWorld() {
-        return d.helloWorld();
+        return "hello";
     }
 }
