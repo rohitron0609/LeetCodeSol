@@ -17,4 +17,16 @@ public class ArraysController {
         String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
         return "<pre>" + data + "</pre>";
     }
+    @GetMapping("/code/ContainerWithMostWater")
+    public String getContainerWithMostWaterCode() throws IOException {
+        ClassPathResource resource = new ClassPathResource("Codes/ContainerWithMostWater.java");
+        String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
+        return "<pre>" + data + "</pre>";
+    }
+    @GetMapping("/code/ThreeSumClosest")
+    public String getThreeSumClosestCode() throws IOException {
+        ClassPathResource resource = new ClassPathResource("Codes/ThreeSumClosest.java");
+        String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
+        return "<pre>" + data + "</pre>";
+    }
 }
