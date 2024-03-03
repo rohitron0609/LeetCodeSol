@@ -1,5 +1,6 @@
 package in.decx.train.Controller;
 
+import in.decx.train.Problems.BinaryTreePruning;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,5 +42,12 @@ public class TreeController {
         String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
         return "<pre>" + data + "</pre>";
     }
+    @GetMapping("/code/BinaryTreePruning")
+    public String getBinaryTreePruningCode() throws IOException {
+        ClassPathResource resource = new ClassPathResource("Codes/BinaryTreePruning.java");
+        String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
+        return "<pre>" + data + "</pre>";
+    }
+
 
 }
