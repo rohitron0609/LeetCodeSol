@@ -35,5 +35,11 @@ public class TreeController {
         String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
         return "<pre>" + data + "</pre>";
     }
+    @GetMapping("/code/LargestValueInEachTreeRow")
+    public String getLargestValueInEachTreeRowCode() throws IOException {
+        ClassPathResource resource = new ClassPathResource("Codes/LargestValueInEachTreeRow.java");
+        String data = StreamUtils.copyToString(resource.getInputStream(), StandardCharsets.UTF_8);
+        return "<pre>" + data + "</pre>";
+    }
 
 }
