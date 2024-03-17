@@ -1,52 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Problems</title>
+    <title>LeetCode Solutions</title>
+    <style>
+        .container {
+            display: flex;
+        }
+        .file-list {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .file-content {
+            flex: 2;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-<h1>Problem List</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Problem No</th>
-        <th>Problem Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/TwoSum">1</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/TwoSum">TwoSum</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/ContainerWithMostWater">11</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/ContainerWithMostWater">ContainerWithMostWater</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/ThreeSumClosest">16</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/ThreeSumClosest">3SumClosest</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/SymmetricTree">101</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/SymmetricTree">Symmetric Tree</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/InvertBinaryTree">226</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/InvertBinaryTree">Invert Binary Tree</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/LargestValueInEachTreeRow">515</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/LargestValueInEachTreeRow">Largest value in each tree row</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/MergeBinaryTrees">617</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/MergeBinaryTrees">Merge Binary Trees</a></td>
-    </tr>
-    <tr>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/BinaryTreePruning">814</a></td>
-        <td><a href="https://ry-leetcodesolutions.azurewebsites.net/code/BinaryTreePruning">BinaryTreePruning</a></td>
-    </tr>
-    <!-- Add more rows as needed -->
-    </tbody>
-</table>
+<h1>Problems</h1>
+<div class="container">
+    <div class="file-list">
+        <table>
+            <thead>
+            <tr>
+                <th>File Name</th>
+            </tr>
+            </thead>
+            <tbody id="fileList"></tbody>
+        </table>
+    </div>
+    <div class="file-content">
+        <pre id="fileContent"></pre>
+    </div>
+</div>
+<script>
+    fetch("/files")
+        .then(response => response.json())
+        .then(data => {
+            const fileList = document.getElementById("fileList");
+            const fileContent = document.getElementById("fileContent");
+            data.forEach(file => {
+                const row = document.createElement("tr");
+                const cell = document.createElement("td");
+                const link = document.createElement("a");
+                link.setAttribute("href", "#");
+                link.textContent = file;
+                link.addEventListener("click", () => {
+                    fetch(`/files/${file}`)
+                        .then(response => response.text())
+                        .then(content => {
+                            fileContent.textContent = content;
+                        });
+                });
+                cell.appendChild(link);
+                row.appendChild(cell);
+                fileList.appendChild(row);
+            });
+        });
+</script>
 </body>
 </html>
